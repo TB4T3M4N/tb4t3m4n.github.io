@@ -775,3 +775,39 @@ a.contact-card:focus-visible {
     padding: 1.75rem 1.25rem;
   }
 }
+
+
+/* Shared hero: personal tagline (not a job title) and fixed button slots */
+
+.hero .tagline,
+.hero .title {
+  margin: 1.15rem 0 0;
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  font-weight: 500;
+  color: var(--copper);
+}
+
+.hero .org {
+  display: none;
+}
+
+.hero-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 11.25rem));
+  justify-content: start;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.hero-actions .btn {
+  width: 100%;
+  min-height: 2.75rem;
+}
+
+@media (max-width: 760px) {
+  .hero-actions {
+    grid-template-columns: 1fr;
+    max-width: 16rem;
+  }
+}
