@@ -3,8 +3,8 @@
 
   Edit THIS file to change the name, personal tagline, about-me line,
   location, navigation, or the button row. Those updates then appear
-  on every page (home, /resume/, /about/, and any future page that
-  includes the placeholder and this script).
+  on every page (home, /resume/, /about/, /demos/, and any future
+  page that includes the placeholder and this script).
 
   After you change this file or style.css, bump the cache-busting
   query on every page — style.css?v=N and assets/site.js?v=N — so
@@ -21,10 +21,10 @@
   the hero is in the document before the rest of the page paints.
 
   Button row, same slots and size on every page:
-    [View resume]  [About me]  [Email me]
+    [View resume]  [About me]  [Demos]  [Email me]
   On the page a button points to, that same slot becomes "Go back"
   and links to the home page. Email me stays a mailto: link and is
-  never replaced. The home page always shows the three normal labels.
+  never replaced. The home page always shows the four normal labels.
 
   Links are resolved from this script's URL (…/assets/site.js), so
   the site works at the domain root or under a sub-path. Do not add
@@ -44,12 +44,14 @@
   var NAV = [
     { id: "home", label: "Home", href: "./" },
     { id: "resume", label: "Resume", href: "resume/" },
-    { id: "about", label: "About", href: "about/" }
+    { id: "about", label: "About", href: "about/" },
+    { id: "demos", label: "Demos", href: "demos/" }
   ];
 
   var BUTTONS = [
     { id: "resume", label: "View resume", href: "resume/", style: "btn-primary" },
     { id: "about", label: "About me", href: "about/", style: "btn-ghost" },
+    { id: "demos", label: "Demos", href: "demos/", style: "btn-ghost" },
     { id: "email", label: "Email me", href: EMAIL, style: "btn-ghost" }
   ];
 
@@ -80,6 +82,7 @@
     rel = rel.replace(/^\/+/, "").replace(/\/+$/, "");
     if (rel === "resume") return "resume";
     if (rel === "about") return "about";
+    if (rel === "demos") return "demos";
     return "home";
   }
 

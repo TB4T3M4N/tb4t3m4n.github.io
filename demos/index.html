@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demos — Tyler Bateman</title>
+  <meta name="description" content="Interactive, in-browser demos and GitHub project links from Tyler Bateman — email headers, a local password check, a KQL-style log filter, and a speaker delay calculator.">
+  <meta name="author" content="Tyler Bateman">
+  <link rel="canonical" href="https://tb4t3m4n.github.io/demos/">
+  <meta property="og:title" content="Demos — Tyler Bateman">
+  <meta property="og:description" content="In-browser demos and project links. Everything here runs locally; nothing is sent to a server.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tb4t3m4n.github.io/demos/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230f1419'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia,serif' font-size='30' fill='%23e8c39e'%3ETB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=2">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div id="site-chrome">
+    <noscript>
+      <header class="site-header">
+        <div class="wrap header-inner">
+          <a class="logo" href="../" aria-label="Tyler Bateman, home">
+            <span class="logo-mark" aria-hidden="true">TB</span>
+            <span class="logo-name">Tyler Bateman</span>
+          </a>
+          <nav class="nav" aria-label="Primary">
+            <a href="../">Home</a>
+            <a href="../resume/">Resume</a>
+            <a href="../about/">About</a>
+            <a href="./" aria-current="page">Demos</a>
+          </nav>
+        </div>
+      </header>
+      <section class="hero" id="top">
+        <div class="wrap">
+          <p class="eyebrow">Lake City, Washington, United States</p>
+          <h1>Tyler Bateman</h1>
+          <p class="tagline">IT Security Pro · Outdoors Lover · Gamer</p>
+          <p class="lede">I hike and spend time outdoors, play games, and run live sound for my church, weddings, and events.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="../resume/">View resume</a>
+            <a class="btn btn-ghost" href="../about/">About me</a>
+            <a class="btn btn-ghost" href="../">Go back</a>
+            <a class="btn btn-ghost" href="mailto:tyler@thebatemans.com">Email me</a>
+          </div>
+        </div>
+      </section>
+    </noscript>
+  </div>
+  <script src="../assets/site.js?v=2"></script>
+
+  <main id="main">
+    <section class="section" id="projects">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">GitHub</p>
+          <h2>Projects</h2>
+        </header>
+        <p class="demos-intro">Repos from my portfolio plan. Cards marked “Live on GitHub” open the public repository. The rest are planned and unlinked for now, so you are not sent to a missing page. This site itself is already public at <a href="https://github.com/TB4T3M4N/tb4t3m4n.github.io" target="_blank" rel="noopener noreferrer">TB4T3M4N/tb4t3m4n.github.io</a>.</p>
+        <noscript><p>Project cards need JavaScript. The planned repos live under github.com/TB4T3M4N once they are created.</p></noscript>
+        <div class="project-grid" id="project-cards"></div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="playgrounds">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">Try these in the browser</p>
+          <h2>Interactive demos</h2>
+        </header>
+        <p class="demos-intro">Each demo runs on this page only. Nothing is uploaded, and the samples are synthetic lab data — not mail, passwords, or logs from any real environment.</p>
+
+        <article class="demo-panel" id="demo-headers">
+          <h3>Email header red-flag check</h3>
+          <p class="demo-shows" data-role="shows"></p>
+          <p class="demo-privacy">Runs locally in your browser. Do not paste mail from a customer or work mailbox; use the lab samples or a message you created yourself.</p>
+          <div class="demo-actions">
+            <button type="button" class="btn btn-ghost" data-sample="clean">Load a clean lab sample</button>
+            <button type="button" class="btn btn-ghost" data-sample="flags">Load a sample with red flags</button>
+          </div>
+          <div class="demo-field">
+            <label for="header-input">Headers</label>
+            <textarea id="header-input" data-role="input" spellcheck="false" placeholder="Paste email headers here"></textarea>
+          </div>
+          <div class="demo-actions">
+            <button type="button" class="btn btn-primary" data-role="run">Check headers</button>
+          </div>
+          <div class="demo-output" data-role="output"></div>
+          <div data-role="source"></div>
+        </article>
+
+        <article class="demo-panel" id="demo-password">
+          <h3>Password strength and entropy</h3>
+          <p class="demo-shows" data-role="shows"></p>
+          <p class="demo-privacy">Evaluated on this device only. The value is not stored, logged, or sent anywhere. Do not enter a password you use in real life if you are sharing your screen.</p>
+          <div class="demo-field">
+            <label for="password-input">Password to evaluate</label>
+            <input id="password-input" type="password" data-role="input" autocomplete="new-password" spellcheck="false">
+          </div>
+          <div class="demo-output" data-role="output"></div>
+          <div data-role="source"></div>
+        </article>
+
+        <article class="demo-panel" id="demo-kql">
+          <h3>KQL-style log filter</h3>
+          <p class="demo-shows" data-role="shows"></p>
+          <p class="demo-privacy">Filters a bundled, obviously fake log (example.test users and documentation IP ranges). It does not connect to Microsoft 365 or any tenant.</p>
+          <p class="demo-note">Supported steps: <code>SigninLogs</code>, <code>DeviceEvents</code>, <code>EmailEvents</code>, or <code>*</code>, then <code>| where Field == &quot;value&quot;</code> (also <code>!=</code>, <code>contains</code>, <code>startswith</code>, <code>has</code>), <code>| project</code>, <code>| take</code>, and <code>| count</code>. Ctrl+Enter or Cmd+Enter runs the query.</p>
+          <div class="demo-field">
+            <label for="kql-input">Query</label>
+            <textarea id="kql-input" data-role="input" spellcheck="false"></textarea>
+          </div>
+          <p class="demo-note">Examples:</p>
+          <div class="demo-chips" data-role="examples"></div>
+          <div class="demo-actions">
+            <button type="button" class="btn btn-primary" data-role="run">Run query</button>
+          </div>
+          <div class="demo-output" data-role="output"></div>
+          <div data-role="source"></div>
+        </article>
+
+        <article class="demo-panel" id="demo-sound">
+          <h3>Speaker delay calculator</h3>
+          <p class="demo-shows" data-role="shows"></p>
+          <p class="demo-privacy">A local arithmetic helper. No audio is uploaded.</p>
+          <div class="demo-inline">
+            <div class="demo-field">
+              <label for="sound-distance">Distance from the reference (listener or mic)</label>
+              <input id="sound-distance" type="number" min="0" step="0.1" value="20" data-role="distance">
+            </div>
+            <div class="demo-field">
+              <label for="sound-other">Optional second source distance</label>
+              <input id="sound-other" type="number" min="0" step="0.1" placeholder="e.g. 8" data-role="other">
+            </div>
+            <div class="demo-field">
+              <span class="demo-privacy" style="margin:0 0 0.35rem;display:block;">Units</span>
+              <div class="demo-units">
+                <label><input type="radio" name="sound-unit" value="ft" checked> Feet</label>
+                <label><input type="radio" name="sound-unit" value="m"> Meters</label>
+              </div>
+            </div>
+          </div>
+          <div class="demo-output" data-role="output"></div>
+          <div data-role="source"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© Tyler Bateman</p>
+    </div>
+  </footer>
+
+  <script src="../assets/projects.js?v=2"></script>
+  <script src="../assets/demos/headers.js?v=2"></script>
+  <script src="../assets/demos/password.js?v=2"></script>
+  <script src="../assets/demos/kql.js?v=2"></script>
+  <script src="../assets/demos/sound.js?v=2"></script>
+  <script src="../assets/demos/init.js?v=2"></script>
+</body>
+</html>
