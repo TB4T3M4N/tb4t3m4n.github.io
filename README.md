@@ -1,6 +1,8 @@
 # Tyler Bateman
 
-Security and IT support engineer, currently a Federal Post-Sales Technical Router at Microsoft / LTIMindtree.
+Security and IT support engineer, currently a Federal Post-Sales Technical Router at Microsoft / LTIMindtree. Also available for wedding and event sound.
 
 - Site: [tb4t3m4n.github.io](https://tb4t3m4n.github.io)
+- Resume: [tb4t3m4n.github.io/resume](https://tb4t3m4n.github.io/resume/)
 - LinkedIn: [linkedin.com/in/tyler-bateman-6b425594](https://www.linkedin.com/in/tyler-bateman-6b425594)
+- GitHub: [github.com/TB4T3M4N](https://github.com/TB4T3M4N)

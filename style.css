@@ -583,3 +583,195 @@ ul {
     color: black;
   }
 }
+
+
+/* Nav: current page */
+
+.nav a[aria-current="page"] {
+  color: var(--hero-text);
+  box-shadow: inset 0 -2px 0 var(--copper);
+}
+
+/* Home contact cards */
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 7.5rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.45rem;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: var(--ink);
+}
+
+a.contact-card:hover,
+a.contact-card:focus-visible {
+  border-color: var(--accent);
+  color: var(--ink);
+  transform: translateY(-2px);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.contact-card .label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.45rem;
+}
+
+.contact-card .value {
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+
+/* About placeholders */
+
+.placeholder-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.placeholder-card {
+  background: var(--bg-elev);
+  border: 1.5px dashed #c8bfae;
+  border-radius: var(--radius);
+  padding: 1.4rem 1.45rem;
+  min-height: 8rem;
+}
+
+.placeholder-card .label {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a7f6c;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+.placeholder-card h3 {
+  font-family: var(--font);
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.placeholder-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.about-note {
+  margin: -1rem 0 2rem;
+  max-width: 38rem;
+  color: #3d444c;
+}
+
+@media (max-width: 760px) {
+  .contact-cards,
+  .placeholder-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Home sound line */
+
+.sound-line {
+  margin: 1.25rem 0 0;
+  max-width: 48rem;
+  color: var(--copper);
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+.sound-line a {
+  color: var(--copper);
+}
+
+.sound-line a:hover,
+.sound-line a:focus-visible {
+  color: #f0d3b6;
+}
+
+/* Event sound callout */
+
+.sound-callout {
+  background:
+    radial-gradient(800px 320px at 100% 0%, rgba(232, 195, 158, 0.16), transparent 60%),
+    radial-gradient(600px 280px at 0% 100%, rgba(31, 111, 102, 0.28), transparent 55%),
+    var(--hero);
+  color: var(--hero-text);
+  border-radius: calc(var(--radius) + 4px);
+  padding: 2.5rem 2.15rem;
+}
+
+.sound-callout .eyebrow {
+  color: var(--copper);
+}
+
+.sound-callout h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin: 0 0 1rem;
+}
+
+.sound-callout p {
+  margin: 0 0 1.6rem;
+  max-width: 36rem;
+  color: #d8d4ca;
+  font-size: 1.12rem;
+  font-weight: 300;
+}
+
+/* Real hobby cards */
+
+.hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.hobby-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.45rem 1.3rem;
+  box-shadow: var(--shadow);
+}
+
+.hobby-card h3 {
+  font-family: var(--font);
+  font-size: 1.15rem;
+  margin-bottom: 0.45rem;
+}
+
+.hobby-card p {
+  margin: 0;
+  color: #2d3338;
+}
+
+@media (max-width: 760px) {
+  .hobby-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sound-callout {
+    padding: 1.75rem 1.25rem;
+  }
+}
