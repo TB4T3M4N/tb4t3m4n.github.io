@@ -5,9 +5,10 @@
   Edit THIS file to change the name, the line under it, or the strips.
   Every page (home, resume, about, demos) picks the change up.
 
-  The strip for the page you are on lights its signal LED and its label
-  switches to "Go back", which returns to the home page. Every fader
-  rests at the same spot so nothing moves between pages.
+  The strip for the page you are on lights its signal LED, its fader
+  handle is pushed to the top of its track, and its label switches to
+  "Go back", which returns to the home page. The other handles rest at
+  the bottom. The tracks themselves never move between pages.
 
   The same name and strips are also built as a compact bar that slides
   in at the top of the screen once the main header scrolls out of view.

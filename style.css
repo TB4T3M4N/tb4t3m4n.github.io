@@ -268,3 +268,8 @@ html{scroll-padding-top:7.5rem}
 /* the name stays on one line even before its web font arrives, so the
    console below it does not drop and then jump back up */
 .plate-name,.mini-name{white-space:nowrap;overflow:hidden;max-width:100%}
+
+/* the current page's fader handle is pushed to the top of its track;
+   the track stays put, only the handle moves */
+.strip.is-up .fader{bottom:auto;top:6px}
+.mstrip.is-up .mfader{left:auto;right:4%}
