@@ -41,7 +41,7 @@
       if (a === null) {
         var err = document.createElement("p");
         err.className = "demo-error";
-        err.textContent = "Enter a distance of zero or more.";
+        err.textContent = "Enter a distance of 0 or more.";
         out.appendChild(err);
         return;
       }

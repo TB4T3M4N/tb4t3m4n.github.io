@@ -1,5 +1,5 @@
-/* KQL-style filter over a bundled, synthetic log. Nothing is queried
-   from a tenant and no data leaves the browser. */
+/* KQL-style filter over a bundled, synthetic log. Everything runs
+   in the browser. */
 (function (global) {
   "use strict";
 
@@ -133,7 +133,7 @@
       var empty = document.createElement("tr");
       var td = document.createElement("td");
       td.colSpan = result.columns.length;
-      td.textContent = "No rows matched.";
+      td.textContent = "0 rows matched.";
       empty.appendChild(td);
       tbody.appendChild(empty);
     } else {

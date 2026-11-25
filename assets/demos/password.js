@@ -1,5 +1,5 @@
-/* Password strength + entropy estimate. The value is not stored, logged,
-   or sent anywhere. A short bundled list of common passwords is local. */
+/* Password strength + entropy estimate. The value stays on this page.
+   A short bundled list of common passwords is local. */
 (function (global) {
   "use strict";
 
@@ -98,7 +98,7 @@
 
       var cave = document.createElement("p");
       cave.className = "demo-note";
-      cave.textContent = "Entropy here is a local math estimate (length × log2 of the character set), not a guarantee. This value is not sent or stored.";
+      cave.textContent = "Entropy here is a local math estimate (length × log2 of the character set). Treat it as a guide. The value stays on this page.";
       out.appendChild(cave);
     }
 

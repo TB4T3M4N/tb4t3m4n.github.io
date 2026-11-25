@@ -2,30 +2,21 @@
   Project cards and demo metadata for the /demos/ page.
 
   Edit THIS file to add a project, change its summary, or flip a card
-  from "Coming soon" to "Live on GitHub". Then bump the ?v=N query on
-  assets/projects.js in demos/index.html (and on style.css / site.js
-  across every page if you also changed those files) so browsers do
-  not keep a stale copy.
+  from "Coming soon" to "Live on GitHub". Then raise the ?v=N number on
+  assets/projects.js in demos/index.html so browsers load the new copy.
 
   For each project in SITE_PROJECTS:
-    name     — card title
-    repo     — repository name under https://github.com/TB4T3M4N/<repo>
-    summary  — one or two sentences
-    live     — set to true only after the public repo exists. Cards
-               with live: false do not link out, so visitors are not
-               sent to a 404. Checked against the GitHub API
-               (https://api.github.com/users/TB4T3M4N/repos) when this
-               file was written: the only public repo was
-               tb4t3m4n.github.io, so all eleven plan repos start as
-               coming soon.
+    name     card title
+    repo     repository name under https://github.com/TB4T3M4N/<repo>
+    summary  one or two sentences
+    live     set to true once the public repo exists, and the card
+             becomes a link to it. live-sound-setup is public.
 
-  SITE_DEMOS describes the in-browser playgrounds on the same page.
-  Their dedicated project repos use the same live flag as the matching
-  card. Demo source itself lives in this site repo
-  (tb4t3m4n.github.io), which already exists.
+  SITE_DEMOS describes the in-browser demos on the same page. Each
+  demo's project link uses the live flag of the matching card. Demo
+  source lives in this site repo (tb4t3m4n.github.io).
 
-  Do not add a phone number, ticket text, tenant IDs, or any real
-  customer data to this file or the bundled samples.
+  Keep this file to public, made-up sample data.
 */
 
 (function (global) {
@@ -38,7 +29,7 @@
       name: "Live sound setup",
       repo: "live-sound-setup",
       summary: "Church, wedding, and event audio runbooks: gear inventory, input lists, and a day-of-show checklist.",
-      live: false
+      live: true
     },
     {
       name: "PowerShell helpdesk toolkit",
@@ -49,7 +40,7 @@
     {
       name: "Defender KQL hunting library",
       repo: "defender-kql-hunting",
-      summary: "Commented Advanced Hunting queries for Defender, written against public docs and demo data — not customer tenants.",
+      summary: "Commented Advanced Hunting queries for Defender, written against public docs and demo data.",
       live: false
     },
     {
@@ -73,7 +64,7 @@
     {
       name: "Weekend game helpers",
       repo: "gaming-helpers",
-      summary: "Path of Exile notes, a Tarkov checklist, and an optional Discord bot. No cheats or play automation.",
+      summary: "Path of Exile notes, a Tarkov checklist, and an optional Discord bot.",
       live: false
     },
     {
@@ -113,7 +104,7 @@
     {
       id: "password",
       title: "Password strength and entropy",
-      shows: "A local estimate of charset size and entropy, plus a short list of weak patterns. The password never leaves this page.",
+      shows: "A local estimate of charset size and entropy, plus a short list of weak patterns. The math runs right on this page.",
       repo: null,
       sourcePath: "assets/demos/password.js"
     },

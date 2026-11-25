@@ -51,7 +51,7 @@
       card.appendChild(el("p", { className: "project-repo" }, "TB4T3M4N/" + project.repo));
       card.appendChild(el("p", null, project.summary));
       if (!project.live) {
-        var note = el("p", { className: "project-pending" }, "The repository is not public yet, so this card does not link out.");
+        var note = el("p", { className: "project-pending" }, "This card links to GitHub once the repo goes public.");
         card.appendChild(note);
       }
       host.appendChild(card);
@@ -70,7 +70,7 @@
       wrap.appendChild(src);
     }
     if (demo.repo) {
-      wrap.appendChild(document.createTextNode(" · "));
+      wrap.appendChild(document.createElement("br"));
       var match = projectByRepo(demo.repo);
       if (match && match.live) {
         var live = el("a", {

@@ -1,5 +1,5 @@
 /* Email header red-flag check — runs entirely in the browser. Sample
-   messages are synthetic (example.test). Do not paste real customer mail. */
+   messages are synthetic (example.test). */
 (function (global) {
   "use strict";
 
@@ -112,14 +112,14 @@
     var replyDom = domainOf(reply);
     var flags = [];
     var spf = auth.spf || spfLine;
-    if (spf === "fail" || spf === "softfail") flags.push("SPF did not pass (" + spf + ").");
-    if (auth.dkim === "fail") flags.push("DKIM did not pass.");
-    if (auth.dmarc === "fail") flags.push("DMARC did not pass.");
+    if (spf === "fail" || spf === "softfail") flags.push("SPF failed (" + spf + ").");
+    if (auth.dkim === "fail") flags.push("DKIM failed.");
+    if (auth.dmarc === "fail") flags.push("DMARC failed.");
     if (fromDom && retDom && fromDom !== retDom) {
-      flags.push("Return-Path domain (" + retDom + ") does not match the From domain (" + fromDom + ").");
+      flags.push("Return-Path domain (" + retDom + ") differs from the From domain (" + fromDom + ").");
     }
     if (fromDom && replyDom && replyDom !== fromDom) {
-      flags.push("Reply-To domain (" + replyDom + ") does not match the From domain (" + fromDom + ").");
+      flags.push("Reply-To domain (" + replyDom + ") differs from the From domain (" + fromDom + ").");
     }
     if (/examp1e|rnicrosoft|paypa1|g00gle/i.test(from + " " + fromDom)) {
       flags.push("The From display or domain looks like a lookalike of a well-known name (lab sample).");
@@ -139,7 +139,7 @@
   function pill(label, value) {
     var span = document.createElement("span");
     span.className = "demo-pill demo-pill-" + toneFor(value);
-    span.textContent = label + ": " + (value || "not found");
+    span.textContent = label + ": " + (value || "missing");
     return span;
   }
 
@@ -172,7 +172,7 @@
     if (result.flags.length === 0) {
       var ok = document.createElement("p");
       ok.className = "demo-ok";
-      ok.textContent = "No header red flags in the checks this demo runs. That is not a guarantee the message is safe — it is only a reading of these fields.";
+      ok.textContent = "Every header check in this demo passed. This result covers these header fields, so judge the rest of the message on its own merits.";
       flags.appendChild(ok);
     } else {
       var title = document.createElement("p");
