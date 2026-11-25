@@ -17,4 +17,4 @@ Personal site for Tyler Bateman: IT security support at Microsoft through LTIMin
 - `style.css`: colors and layout.
 - `assets/qr.png` and `assets/qr.svg`: the business card QR code, which points to the home page.
 
-After changing a CSS or JS file, raise the `?v=3` number where that file is linked in the HTML pages so browsers load the new copy.
+After changing a CSS or JS file, raise the `?v=5` number where that file is linked in the HTML pages so browsers load the new copy.

@@ -7,6 +7,9 @@
 
   The strip for the page you are on gets its fader pushed up and its
   label switches to "Go back", which returns to the home page.
+
+  The same name and strips are also built as a compact bar that slides
+  in at the top of the screen once the main header scrolls out of view.
 */
 (function () {
   "use strict";
@@ -71,6 +74,63 @@
     nav.appendChild(a);
   });
   desk.appendChild(nav);
+
+  // Compact bar: same name and strips, shown after the header scrolls away.
+  var mini = el("div", "mini");
+  mini.setAttribute("aria-hidden", "true");
+  mini.setAttribute("inert", "");
+  var miniIn = el("div", "mini-in");
+  var miniName = el("a", "mini-name", NAME);
+  miniName.href = root || "./";
+  miniIn.appendChild(miniName);
+  var miniNav = el("nav", "mini-strips");
+  miniNav.setAttribute("aria-label", "Quick menu");
+  STRIPS.forEach(function (s, i) {
+    var here = s.id === page;
+    var a = el("a", "mstrip" + (here ? " is-up" : ""));
+    a.href = here ? (root || "./") : (/^mailto:/.test(s.href) ? s.href : root + s.href);
+    if (here) a.setAttribute("aria-current", "page");
+    var top = el("span", "mtop");
+    top.setAttribute("aria-hidden", "true");
+    top.appendChild(el("i", "knob mknob cap-" + s.cap));
+    top.appendChild(el("i", "led mled"));
+    a.appendChild(top);
+    a.appendChild(el("span", "scrib", here ? "Go back" : s.label));
+    var slot = el("span", "mslot");
+    slot.setAttribute("aria-hidden", "true");
+    var cap = el("i", "mfader");
+    cap.style.setProperty("--pos", here ? "88%" : (page === "home" ? [38, 52, 44, 60][i] + "%" : "22%"));
+    slot.appendChild(cap);
+    a.appendChild(slot);
+    miniNav.appendChild(a);
+  });
+  miniIn.appendChild(miniNav);
+  mini.appendChild(miniIn);
+
   mount.textContent = "";
   mount.appendChild(desk);
+  mount.appendChild(mini);
+
+  function setShown(on) {
+    if (on === mini.classList.contains("is-on")) return;
+    mini.classList.toggle("is-on", on);
+    if (on) {
+      mini.removeAttribute("aria-hidden");
+      mini.removeAttribute("inert");
+    } else {
+      if (mini.contains(document.activeElement)) document.activeElement.blur();
+      mini.setAttribute("aria-hidden", "true");
+      mini.setAttribute("inert", "");
+    }
+  }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      var e = entries[0];
+      setShown(!e.isIntersecting && e.boundingClientRect.top < 0);
+    }).observe(desk);
+  } else {
+    var check = function () { setShown(desk.getBoundingClientRect().bottom < 0); };
+    window.addEventListener("scroll", check, { passive: true });
+    check();
+  }
 })();
