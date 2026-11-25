@@ -11,7 +11,7 @@
 (function () {
   "use strict";
   var NAME = "Tyler Bateman";
-  var LINE = "I work in IT security, I would rather be outdoors, and I game when the day is done.";
+  var LINE = "I work in IT security, I would rather be gaming, and I am outdoors when I can.";
   var STRIPS = [
     { id: "resume", label: "Resume", href: "resume/", cap: "red" },
     { id: "about",  label: "About me",    href: "about/",  cap: "yellow" },
