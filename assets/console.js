@@ -5,8 +5,9 @@
   Edit THIS file to change the name, the line under it, or the strips.
   Every page (home, resume, about, demos) picks the change up.
 
-  The strip for the page you are on gets its fader pushed up and its
-  label switches to "Go back", which returns to the home page.
+  The strip for the page you are on lights its signal LED and its label
+  switches to "Go back", which returns to the home page. Every fader
+  rests at the same spot so nothing moves between pages.
 
   The same name and strips are also built as a compact bar that slides
   in at the top of the screen once the main header scrolls out of view.
@@ -49,7 +50,7 @@
 
   var nav = el("nav", "strips");
   nav.setAttribute("aria-label", "Primary");
-  STRIPS.forEach(function (s, i) {
+  STRIPS.forEach(function (s) {
     var here = s.id === page;
     var a = el("a", "strip" + (here ? " is-up" : ""));
     a.href = here ? (root || "./") : (/^mailto:/.test(s.href) ? s.href : root + s.href);
@@ -64,13 +65,8 @@
     a.appendChild(el("span", "scrib", here ? "Go back" : s.label));
     var slot = el("span", "slot");
     slot.setAttribute("aria-hidden", "true");
-    var cap = el("i", "fader");
-    cap.style.setProperty("--pos", here ? "6%" : (page === "home" ? [38, 52, 44, 60][i] + "%" : "72%"));
-    slot.appendChild(cap);
+    slot.appendChild(el("i", "fader"));
     a.appendChild(slot);
-    var num = el("span", "chnum", String(i + 1));
-    num.setAttribute("aria-hidden", "true");
-    a.appendChild(num);
     nav.appendChild(a);
   });
   desk.appendChild(nav);
@@ -85,7 +81,7 @@
   miniIn.appendChild(miniName);
   var miniNav = el("nav", "mini-strips");
   miniNav.setAttribute("aria-label", "Quick menu");
-  STRIPS.forEach(function (s, i) {
+  STRIPS.forEach(function (s) {
     var here = s.id === page;
     var a = el("a", "mstrip" + (here ? " is-up" : ""));
     a.href = here ? (root || "./") : (/^mailto:/.test(s.href) ? s.href : root + s.href);
@@ -98,9 +94,7 @@
     a.appendChild(el("span", "scrib", here ? "Go back" : s.label));
     var slot = el("span", "mslot");
     slot.setAttribute("aria-hidden", "true");
-    var cap = el("i", "mfader");
-    cap.style.setProperty("--pos", here ? "88%" : (page === "home" ? [38, 52, 44, 60][i] + "%" : "22%"));
-    slot.appendChild(cap);
+    slot.appendChild(el("i", "mfader"));
     a.appendChild(slot);
     miniNav.appendChild(a);
   });

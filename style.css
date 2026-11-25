@@ -25,7 +25,7 @@ h3{font-size:1.45rem;font-weight:700}
 .plate-name a{color:var(--text);text-decoration:none}
 .plate-line{max-width:32rem;font-size:1.25rem;margin:0;color:var(--muted)}
 .strips{display:grid;grid-template-columns:repeat(4,1fr);background:var(--desk-d)}
-.strip{display:flex;flex-direction:column;align-items:center;gap:.8rem;padding:1.4rem .5rem 1rem;text-decoration:none;color:var(--text);
+.strip{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:.8rem;padding:1.4rem .5rem 1rem;text-decoration:none;color:var(--text);
   border-left:2px solid var(--groove);background:var(--face);position:relative}
 .strip:first-child{border-left:0}
 .strip:hover{background:#2a4070;color:var(--text)}
@@ -42,10 +42,9 @@ h3{font-size:1.45rem;font-weight:700}
 .strip.is-up .scrib{background:var(--hot);color:var(--ink);border-color:var(--hot)}
 .slot{position:relative;width:10px;height:150px;background:#0b1324;border-radius:2px;margin:.3rem 0}
 .slot::before{content:"";position:absolute;left:-14px;right:-14px;top:6%;height:2px;background:var(--groove)}
-.fader{position:absolute;left:50%;top:var(--pos,50%);width:44px;height:26px;margin-left:-22px;background:#2e4168;border-radius:3px;
+.fader{position:absolute;left:50%;bottom:6px;width:44px;height:26px;margin-left:-22px;background:#2e4168;border-radius:3px;
   border-top:3px solid #6b7fa6;box-shadow:0 3px 0 #0b1324}
 .fader::after{content:"";position:absolute;left:4px;right:4px;top:10px;height:2px;background:#fff}
-.chnum{font:700 1.1rem "Saira Condensed",sans-serif;color:var(--muted)}
 
 /* ---- board */
 .board{background:var(--navy);max-width:1180px;margin:0 auto;border-left:2px solid var(--line);border-right:2px solid var(--line)}
@@ -198,7 +197,6 @@ textarea,input[type=password],input[type=number]{font-size:1rem}
   .strip:nth-child(2n) .scrib{transform:none}
   .strip{min-width:0;padding:.9rem .25rem .6rem}
   .slot{height:64px}
-  .chnum{font-size:1rem}
   .plate-name{font-size:3.1rem}
   .plate-line{font-size:1.1rem}
   .rs-dates,.foot,.demo-privacy,.demo-note,.demo-source,.is-soon-text,.io dd,.inputs td,.inputs th,.dates,.span{font-size:1rem}
@@ -239,7 +237,7 @@ html{scroll-padding-top:7.5rem}
 .mstrip:nth-child(2n) .scrib{transform:rotate(.9deg)}
 .mstrip.is-up .scrib{background:var(--hot);color:var(--ink);border-color:var(--hot)}
 .mslot{position:relative;display:block;width:78%;height:6px;background:#0b1324;border-radius:2px;margin:.25rem 0 .15rem}
-.mfader{position:absolute;top:50%;left:var(--pos,50%);width:22px;height:14px;margin:-7px 0 0 -11px;background:#2e4168;border-radius:2px;
+.mfader{position:absolute;top:50%;left:22%;width:22px;height:14px;margin:-7px 0 0 -11px;background:#2e4168;border-radius:2px;
   border-left:2px solid #6b7fa6;box-shadow:2px 0 0 #0b1324}
 .mfader::after{content:"";position:absolute;top:2px;bottom:2px;left:50%;width:2px;margin-left:-1px;background:#fff}
 @media (max-width:900px){
@@ -253,3 +251,20 @@ html{scroll-padding-top:7.5rem}
   .mknob{width:16px;height:16px}
 }
 @media (prefers-reduced-motion:reduce){.mini,.mini.is-on{transition:none!important}}
+
+/* ---- fixed console layout: dials pinned to the top, faders pinned to the
+   bottom, labels kept to one line so nothing shifts between pages, on
+   hover or tap, or when the web fonts finish loading */
+.strip,.mstrip{justify-content:flex-start}
+.strip .slot,.mstrip .mslot{margin-top:auto;flex:none}
+.knobs,.led,.mtop{flex:none}
+.strip .scrib,.mstrip .scrib{flex:none;white-space:nowrap;overflow:hidden;text-overflow:clip}
+@media (min-width:901px){
+  /* side-by-side header: strips are narrower, so a label may take two
+     lines; every label box keeps room for two so all strips match */
+  .strip .scrib{white-space:normal;overflow:visible;height:calc(2.4em + .9rem + 2px);display:flex;align-items:center;justify-content:center}
+}
+.strip:active,.mstrip:active,.strip:hover,.mstrip:hover{transform:none}
+/* the name stays on one line even before its web font arrives, so the
+   console below it does not drop and then jump back up */
+.plate-name,.mini-name{white-space:nowrap;overflow:hidden;max-width:100%}
